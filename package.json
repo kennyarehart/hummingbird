@@ -23,5 +23,8 @@
     "eslint-plugin-prettier": "^2.5.0",
     "np": "^2.19.0",
     "prettier": "^1.10.2"
+  },
+  "dependencies": {
+    "raf-polyfill": "^1.0.0"
   }
 }
