@@ -1,10 +1,8 @@
 # Hummingbird
 
 [![GitHub issues](https://img.shields.io/github/issues/kennyarehart/hummingbird.svg?style=flat-square)](https://github.com/kennyarehart/hummingbird)
-[![npm downloads](https://img.shields.io/npm/dm/@ff0000-ad-tech%2Fad-velvet.svg?style=flat-square)](https://www.npmjs.com/package/@ff0000-ad-tech%2Fad-velvet)
 [![GitHub contributors](https://img.shields.io/github/contributors/kennyarehart/hummingbird.svg?style=flat-square)](https://github.com/kennyarehart/hummingbird/graphs/contributors/)
 [![GitHub commit-activity](https://img.shields.io/github/commit-activity/y/kennyarehart/hummingbird.svg?style=flat-square)](https://github.com/kennyarehart/hummingbird/commits/master)
-[![npm license](https://img.shields.io/npm/l/@ff0000-ad-tech%2Fad-velvet.svg?style=flat-square)](https://github.com/kennyarehart/hummingbird/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 ---
