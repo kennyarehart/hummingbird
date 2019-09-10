@@ -9,31 +9,44 @@
 
 ---
 
-Hummingbird is a universal ticker for animations, timers, intervals, etc. Mixing multiple <code>requestanimationframe</code>, <code>setTimeout</code>, <code>setInterval</code> calls can degrade performance. Additionally, pausing, resuming, and controlling the iteration speed are not possible with extensive extra code. Hummingbird solves all of these and more! By leveraging a single iterator along with intelligently grouping logic, the number of calls are optimized to give the best possible browser performance, even at high volumes of handlers.
+Hummingbird is a library for working with Javascript's <code>requestanimationframe</code> to centralize a universal ticker for animations, timers, intervals, etc.
+
+### Problem
+
+-   Mixing multiple <code>requestanimationframe</code>, <code>setTimeout</code>, <code>setInterval</code> calls can degrade performance.
+-   Pausing, resuming, and controlling the iteration speed are not possible without extensive extra code.
+
+### Solution
+
+Hummingbird solves all of these and more! By leveraging a single iterator along with intelligently grouping logic, the number of calls are optimized to give the best possible browser performance, even at high volumes of handlers.
+
+### Features
+
+-   Speed control on a per method basis
+-   Pause / Resume on the instance or globally
+-   Add <code>lifeSpan</code> to work as a timeout for the instance
 
 ```js
 import { Hummingbird } from 'hummingbird'
 
 // SETUP - have various methods to call on iteration
-function myMethod1() {
-	console.log('myMethod1')
+function myFirstMethod() {
+	...
 }
 
-const myMethod2 = () => {
-	console.log('myMethod1')
-}
-
-function myMethod3() {
-	console.log('myMethod3')
+const myOtherMethod = () => {
+	...
 }
 
 // most basic usage, simply create a Hummingbird instance passing in the method to be called
-new Hummingbird(myMethod1)
+new Hummingbird(myFirstMethod)
 // OR omit the 'new' keyword
-Hummingbird(myMethod1)
+Hummingbird(myFirstMethod)
+// AND assign it to a variable for specific targeting
+const myBird = Hummingbird(myFirstMethod)
 
 // create an instance and add optional properties
-Hummingbird(myMethod2, {
+Hummingbird(myOtherMethod, {
 	// flaps per second / iteration / speed
 	speed: 18,
 	// how to interpret speed value: SECONDS or FLAPS. default: FLAPS
@@ -44,14 +57,11 @@ Hummingbird(myMethod2, {
 	lifeSpanIn: SECONDS,
 	// if lifeSpan, add a handler
 	onComplete: function(a, b) {
-		console.log(a, b) // true, 'foo'
+		// a = true, b = 'foo'
 	},
 	// provide params to the handler
 	onCompleteParams: [true, 'foo']
 })
-
-// creation returns an instance if specific targeting needed
-const myBird = Hummingbird(myMethod3)
 
 // Hummingbird has global methods to control all instances
 // Pause the whole engine so no methods are called
