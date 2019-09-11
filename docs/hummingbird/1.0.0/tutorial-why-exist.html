@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: Why does Hummingbird exist?</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">Hummingbird Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                 
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                    
+                        <div class="navbar-item">
+                            <a href="https://github.com/kennyarehart/hummingbird" target="_blank">Github</a>
+                        </div>
+                    
+                        <div class="navbar-item">
+                            <a href="./" target="_blank">Example</a>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li><li><a href="tutorial-why-exist.html">Why does Hummingbird exist?</a></li></ul></div><div class="category"><h2>API</h2><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#SECONDS">SECONDS</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Tutorial</p>
+                        <h1>Why does Hummingbird exist?</h1>
+                    </header>
+                    
+                    <section>
+
+<header>
+    
+</header>
+
+<article>
+    <p>What is Hummingbird and why does it exist? How does this compare to other packages that have some aspect of time/animation management? This page attempts to answer all of that.</p>
+<h2>Origin / Disclaimer</h2>
+<p>This is a complete re-write and new take on <a href="https://github.com/ff0000-ad-tech/ad-events/blob/master/docs/FrameRate.md">FrameRate</a>, a sub class of another <a href="https://github.com/ff0000-ad-tech/ad-events">package</a>. The entire system has been re-imagined and re-written from the ground up with numerous added features.</p>
+<h2>Problem</h2>
+<p>There is no native, universal solution for handling tickers and timers in the browser. This includes the following issues:</p>
+<ul>
+<li>Mixing multiple <code>requestanimationframe</code>, <code>setTimeout</code>, <code>setInterval</code> calls can degrade performance.</li>
+<li>There is no native manager when making multiple calls.</li>
+<li>Pausing, resuming, and controlling the iteration speed are not possible without extensive extra code or library.</li>
+<li>Greensock's <code>TweenMax.ticker</code> is a single static ticker which can set the fps, however it can only be set to one value.</li>
+</ul>
+<h2>Solution</h2>
+<p>Hummingbird solves all of these and more! By leveraging a single iterator along with intelligently grouping logic, the number of calls are optimized to give the best possible browser performance, even at high volumes of handlers.</p>
+</article>
+
+</section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Sep 11 2019 11:51:27 GMT-0700 (Pacific Daylight Time)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

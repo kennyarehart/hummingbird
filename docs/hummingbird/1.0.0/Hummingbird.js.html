@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: Hummingbird.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">Hummingbird Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                 
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                    
+                        <div class="navbar-item">
+                            <a href="https://github.com/kennyarehart/hummingbird" target="_blank">Github</a>
+                        </div>
+                    
+                        <div class="navbar-item">
+                            <a href="./" target="_blank">Example</a>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li><li><a href="tutorial-why-exist.html">Why does Hummingbird exist?</a></li></ul></div><div class="category"><h2>API</h2><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#SECONDS">SECONDS</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>Hummingbird.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { enlist, release, releaseSingle, sleep, wake, createTimer, addTimer } from './manager'
+import { calculateFPS, isNumber, toggleLife } from './utils'
+import { SECONDS, FLAPS } from './constants'
+
+/**
+ * A Hummingbird is a single object that holds a single method to be called on a set
+ * iteration speed.
+ *
+ * @class
+ * @category API
+ * @constructor
+ *
+ * @param {function} handler - The method called on each tick based on speed
+ * @param {object} [args] - Optional parameters
+ * @param {number} [args.speed=30] - The frequency that the {@link Hummingbird}'s handler will be called
+ * @param {string} [args.speedIn={@link FLAPS}] - How to interpret the &lt;code>speed&lt;/code>
+ * @param {*} [args.scope] - What &lt;code>this&lt;/code> will be on the handler
+ * @param {number} [args.lifeSpan=undefined] - Length of time the handler will be active
+ * @param {string} [args.lifeSpanIn={@link SECONDS}] - How to interpret &lt;code>lifeSpan&lt;/code>
+ * @param {function} [args.onComplete=undefined] - Called when &lt;code>lifeSpan&lt;/code> value is reached
+ * @param {array} [args.onCompleteParams] - Parameters passed through &lt;code>onComplete&lt;/code>
+ *
+ * @example
+ * import { Hummingbird } from 'hummingbird'
+ *
+ * function foo() { ... }
+ * function bar() { ... }
+ *
+ * // basic creation, using default speed (30 fps)
+ * const fooBird = new Hummingbird(foo)
+ *
+ * // complex creation, things to note:
+ * // - 'new' is optional
+ * // - use 'args' object to pass in optional parameters
+ * // - does not require being assinged to variable
+ * Hummingbird(bar, {
+ * 	// interpret speed in seconds
+ * 	speedIn: SECONDS,
+ * 	// will call handler once every 1.3 seconds
+ * 	speed: 1.3,
+ * 	// interpret lifeSpan in flaps
+ * 	lifeSpanIn: FLAPS,
+ * 	// will call handler only 3 times
+ * 	lifeSpan: 3,
+ * 	// if lifeSpan, add a handler
+ * 	onComplete: function(a, b) {
+ * 		// a = true, b = 'ruh'
+ * 	},
+ * 	// provide params to the handler
+ * 	onCompleteParams: [true, 'ruh']
+ * })
+ */
+const Hummingbird = function(handler, args) {
+	args = args || {}
+	const T = this
+
+	// allow for omitting 'new'
+	if (!(T instanceof Hummingbird)) {
+		return new Hummingbird(handler, args)
+	}
+
+	T._handler = handler
+
+	// Optional args:
+	T.speedIn = args.speedIn || FLAPS
+	T._speed = calculateFPS(args.speed || 30, T.speedIn)
+	T.scope = args.scope || null
+	T.name = args.name || 'hb-' + Math.round(Date.now() * Math.random())
+
+	if (args.lifeSpan) {
+		T.lifeSpan = args.lifeSpan
+		T.lifeSpanIn = args.lifeSpanIn || SECONDS
+		T.onComplete = args.onComplete || function() {}
+		T.onCompleteParams = args.onCompleteParams
+		T.lifeTimer = createTimer(T)
+	}
+
+	T._parent = null
+	T.isReleased = false
+
+	// init
+	enlist(T)
+}
+
+Hummingbird.prototype = {
+	/**
+	 * The iteration speed of the instance.
+	 * @param {number} val
+	 * @returns {Hummingbird} Itself for method chaining
+	 * @example
+	 * // continued from Constructor example
+	 * // changes the speed from the default 30 fps to 24 fps
+	 * foobird.speed(24)
+	 */
+	speed: function(val) {
+		const T = this
+		if (val &amp; isNumber(val)) {
+			releaseSingle(T)
+			T._speed = calculateFPS(val, T.speedIn)
+			enlist(T, true)
+			return T
+		}
+	},
+
+	/**
+	 * Will sleep (pause) this Hummingbird instance so it will not be called on iterations. If this
+	 * is the only and/or last active instance, the entire engine will stop running.
+	 * @returns {Hummingbird} Itself for method chaining
+	 * @see {@link sleep Hummingbird.sleep}
+	 * @example
+	 * // continued from Constructor example
+	 * foobird.sleep()
+	 */
+	sleep: function() {
+		sleep(this)
+		return this
+	},
+
+	/**
+	 * Will wake (resume) this Hummingbird instance so it will not be called on iterations.
+	 * If this instance has been released, calling this will act as if creating a new instance
+	 * without the memory bloat of actually creating. This includes reseting lifeSpan to run again.
+	 * This will activate the entire engine if it is not already running.
+	 * @returns {Hummingbird} Itself for method chaining
+	 * @see {@link wake Hummingbird.wake}
+	 * @example
+	 * // continued from Constructor example
+	 * foobird.wake()
+	 */
+	wake: function() {
+		const T = this
+		if (T.isReleased) {
+			enlist(T)
+			if (T.lifeTimer) addTimer(T.lifeTimer)
+			T.isReleased = false
+		} else {
+			wake(T)
+		}
+		return T
+	},
+
+	/**
+	 * Will release (remove) this Hummingbird instance from the engine. Note that this does NOT
+	 * destroy itself and any external variables holding reference to the instance are still valid.
+	 * Be mindful of assigning instances to variables repeatedly as it can cause a bloat without
+	 * allowing for proper garbage collection.
+	 * @returns {Hummingbird} Itself for method chaining
+	 * @see {@link release Hummingbird.release}
+	 * @example
+	 * // continued from Constructor example
+	 * foobird.release()
+	 */
+	release: function() {
+		const T = this
+		if (!T.isReleased) {
+			releaseSingle(T)
+			T.isReleased = true
+		}
+		return T
+	},
+
+	/**
+	 * The string representation of the Hummingbird
+	 * @returns {String}
+	 */
+	toString: () => 'Hummingbird',
+
+	// internally called methods
+	squawk: function() {
+		const T = this
+		T._handler.call(T.scope, T)
+		return T
+	},
+	sleepLife: function() {
+		toggleLife(this, true)
+	},
+	wakeLife: function() {
+		toggleLife(this, false)
+	}
+}
+
+Hummingbird.release = release
+Hummingbird.sleep = sleep
+Hummingbird.wake = wake
+//Hummingbird.defaultFps
+
+export default Hummingbird
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Sep 11 2019 11:51:27 GMT-0700 (Pacific Daylight Time)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

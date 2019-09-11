@@ -1,4 +1,83 @@
-import Cadence from './Cadence'
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: manager.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">Hummingbird Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                 
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                    
+                        <div class="navbar-item">
+                            <a href="https://github.com/kennyarehart/hummingbird" target="_blank">Github</a>
+                        </div>
+                    
+                        <div class="navbar-item">
+                            <a href="./" target="_blank">Example</a>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li><li><a href="tutorial-why-exist.html">Why does Hummingbird exist?</a></li></ul></div><div class="category"><h2>API</h2><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#SECONDS">SECONDS</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>manager.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Cadence from './Cadence'
 import Timeblock from './Timeblock'
 import { iterateConditional, arrayRemove, arrayFindByKey, arrayRemoveByKey, millisecondsPerFrame, toggleLife, isTypeSeconds } from './utils'
 import 'raf-polyfill'
@@ -150,7 +229,7 @@ export const sleep = (...args) => {
 
 		// assume the whole system is paused THEN
 		// loop of each cadence checking their paused state
-		for (var i = 0, k = _cadencePool.length; i < k; i++) {
+		for (var i = 0, k = _cadencePool.length; i &lt; k; i++) {
 			if (!_cadencePool[i].engine.paused) {
 				_isPaused = false
 				break
@@ -158,7 +237,7 @@ export const sleep = (...args) => {
 		}
 	} else {
 		// sleep everything
-		for (var i = 0, k = _cadencePool.length; i < k; i++) {
+		for (var i = 0, k = _cadencePool.length; i &lt; k; i++) {
 			_cadencePool[i].sleep()
 		}
 		_isPaused = true
@@ -219,7 +298,7 @@ export const wake = (...args) => {
 		}
 	} else {
 		// wake everything
-		for (var i = 0, k = _cadencePool.length; i < k; i++) {
+		for (var i = 0, k = _cadencePool.length; i &lt; k; i++) {
 			_cadencePool[i].wake()
 		}
 		_isPaused = false
@@ -298,3 +377,29 @@ function handleTimer(singleTimer) {
 	// release the bird
 	singleBird.release()
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Sep 11 2019 11:51:27 GMT-0700 (Pacific Daylight Time)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
