@@ -21,7 +21,7 @@ function foo() {
 new Hummingbird(foo)
 ```
 
-### Create without new
+### Create without <code>new</code> operator
 
 The <code>new</code> keyword is optional with [Hummingbird]()
 
@@ -32,6 +32,7 @@ Hummingbird(foo)
 ### Store a reference
 
 Creating a [Hummingbird]() returns an instance which can be stored in a variable. This is to access direct methods on the instance or to be passed in to global methods for control.
+Note: storing in a variable will not allow for proper garbage collection if <code>release</code> is called on the instance.
 
 ```
 const fooBird = Hummingbird(foo)
@@ -69,15 +70,15 @@ fooBird.wake()
 The real strength of Hummingbird comes when multiple methods all need to be called at the same time.
 
 ```
-// various types of methods
 function foo() { ... }
+Hummingbird(foo)
+
 const bar = () => { ... }
+Hummingbird(bar)
+
 const quz = {
     baz: () => { ... }
 }
-
-Hummingbird(foo)
-Hummingbird(bar)
 Hummingbird(quz.baz)
 ```
 
@@ -91,10 +92,25 @@ Hummingbird.wake()
 
 ### Mixing speeds
 
-Each instance can have a unique speed allowing for complex combinations of speeds.
+Each instance can have a unique speed allowing for complex combinations.
 
 ```
 Hummingbird(foo, { speed: 12 })
 Hummingbird(bar, { speed: 24 })
 Hummingbird(quz.baz) // uses the default 30 fps
+```
+
+## Grouping with Flock
+
+Creating a group can be useful when needing to control multiple instances at once. Simply create a <code>Flock</code> passin in instances. Then simply call control methods on the <code>Flock</code> rather than each instance.
+
+```
+import { Hummingbird, Flock } from 'hummingbird'
+
+const fooBird = Hummingbird(foo, { speed: 12 })
+const barBird = Hummingbird(bar, { speed: 24 })
+
+const myFlock = new Flock(fooBird, barBird)
+
+myFlock.pause() // stops both Hummingbirds
 ```

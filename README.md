@@ -11,17 +11,19 @@ Hummingbird is a library for working with Javascript's <code>requestanimationfra
 
 ## Features
 
--   Speed control on a per method basis
+-   Static global engine to allow for cross method / class / file usage within a project
+-   Scalable to theoretically infinite methods
+-   Iteration speed control on a per method basis
 -   Pause / Resume on the instance or globally
--   Add <code>lifeSpan</code> to work as a timeout for the instance
+-   Add a time limit to handling of a method
+-   Create groups to control multiple methods at once
 
 ## Documentation
 
--   [General documentation]()
--   [API docs]()
+-   [General & API documentation]()
 -   [Install guide](./tutorial-install.html)
--   [Quick tour]()
--   [Why does Hummingbird exist?]()
+-   [Quick tour](./tutorial-tour.html)
+-   [Why does Hummingbird exist?](./tutorial-why-exist.html)
 
 ## Contribute
 
