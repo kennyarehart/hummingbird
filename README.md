@@ -28,3 +28,7 @@ Hummingbird is a library for working with Javascript's <code>requestanimationfra
 ## Contribute
 
 Hummingbird is distributed under the MIT license. The code is available on Github. Patches welcome.
+
+---
+
+## permalink: /index.html

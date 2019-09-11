@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"docs": "jsdoc * -c ./docs/jsdoc.json"
+		"docs": "jsdoc * --package '' -c ./jsdoc.json "
 	},
 	"repository": {
 		"type": "git",
