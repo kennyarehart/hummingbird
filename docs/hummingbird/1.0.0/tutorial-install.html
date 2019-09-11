@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Flock.js</title>
+    <title>JSDoc: Install guide</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -66,120 +64,27 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>Flock.js</h1>
+                        <p>Tutorial</p>
+                        <h1>Install guide</h1>
                     </header>
                     
-                    
+                    <section>
 
-
-
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import { arrayRemove } from './utils'
+</header>
 
-/**
- * A Flock is a way of grouping Hummingbird or even other Flock instances for a singlular way
- * to &lt;code>sleep&lt;/code> &amp; &lt;code>wake&lt;/code> every instance added to the &lt;code>Flock&lt;/code>.
- * When creating an instance simply pass in any number of instances or use the &lt;code>add&lt;/code>
- * or &lt;code>remove&lt;/code> after.
- * @class
- *
- * @constructor
- *
- * @param {...Hummingbird|Flock} args - instances to be added on instantiation
- * @example
- * import { Flock, Hummingbird } from 'hummingbird'
- *
- * function foo() { ... }
- * function bar() { ... }
- * function qux() { ... }
- *
- * const fooBird = Hummingbird(foo)
- * const barBird = Hummingbird(bar)
- * const quxBird = Hummingbird(qux)
- *
- * // create a Flock (new keywork is optional)
- * const myFirstFlock = new Flock(fooBird, barBird)
- *
- * // create another Flock and pass in a Flock instance &amp; Hummingbird instance
- * const mySecondFlock = Flock(myFirstFlock, quxBird)
- */
-function Flock(...args) {
-	const T = this
-
-	if (!(T instanceof Flock)) {
-		return new Flock(...args)
-	}
-
-	T.pool = []
-	T.add(...args)
-}
-
-Flock.prototype = {
-	/**
-	 * Add an instance to the pool that can be controlled by the &lt;code>Flock&lt;/code> methods
-	 * @param {...Hummingbird|Flock} args - instances to be added
-	 * @example
-	 * myFirstFlock.add(quxBird)
-	 * myFirstFlock.add(function() {
-	 *  ...
-	 * })
-	 * myFirstFlock.add(() => {
-	 *  ...
-	 * })
-	 */
-	add: function(...args) {
-		this.pool.push(...args)
-	},
-	/**
-	 * remove an instance to the pool
-	 * @param {...Hummingbird|Flock} args - instances to be added
-	 * @example
-	 * myFirstFlock.remove(fooBird)
-	 */
-	remove: function(...args) {
-		const T = this
-		for (var i = 0, k = args.length; i &lt; k; i++) {
-			arrayRemove(T.pool, args[i])
-		}
-	},
-	/**
-	 * Will &lt;code>sleep&lt;/code> every instance in the &lt;code>Flock&lt;/code>
-	 * @example
-	 * myFirstFlock.sleep()
-	 */
-	sleep: function() {
-		this._loop('sleep')
-	},
-	/**
-	 * Will &lt;code>wake&lt;/code> every instance in the &lt;code>Flock&lt;/code>
-	 * @example
-	 * myFirstFlock.wake()
-	 */
-	wake: function() {
-		this._loop('wake')
-	},
-	/**
-	 * The name of the function as as String: 'Flock'
-	 */
-	toString: () => 'Flock',
-	_loop: function(method) {
-		const T = this
-		for (var i = T.pool.length - 1; i >= 0; i--) {
-			T.pool[i][method]()
-		}
-	}
-}
-
-export default Flock
+<article>
+    <p>At the moment, Humminbird is only available directly from Github.</p>
+<pre class="prettyprint source"><code>$ cd [YOUR PROJECT]/node_modules/
+$ git clone git@github.com:kennyarehart/hummingbird.git
 </code></pre>
-        </article>
-    </section>
+<h3>ES6</h3>
+<pre class="prettyprint source lang-js"><code>import { Hummingbird } from 'hummingbird'
+</code></pre>
+</article>
 
-
-
+</section>
 
                 </div>
             </div>

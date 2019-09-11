@@ -1,0 +1,30 @@
+{
+	"opts": {
+		"encoding": "utf8",
+		"destination": "docs/",
+		"readme": "readme.md",
+		"verbose": false,
+		"template": "node_modules/better-docs",
+		"tutorials": "./tutorials"
+	},
+	"tags": {
+		"allowUnknownTags": ["category"]
+	},
+	"plugins": ["plugins/markdown", "node_modules/better-docs/category"],
+	"templates": {
+		"better-docs": {
+			"name": "Hummingbird Documentation",
+			"logo.null": "images/logo.png",
+			"navigation": [
+				{
+					"label": "Github",
+					"href": "https://github.com/kennyarehart/hummingbird"
+				},
+				{
+					"label": "Example",
+					"href": "./"
+				}
+			]
+		}
+	}
+}
