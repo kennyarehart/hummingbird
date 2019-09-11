@@ -21,14 +21,10 @@ Hummingbird is a library for working with Javascript's <code>requestanimationfra
 ## Documentation
 
 -   [General & API documentation](https://kennyarehart.github.io/hummingbird/)
--   [Install guide](https://kennyarehart.github.io/hummingbird/1.0.0/tutorial-install.html)
--   [Quick tour](https://kennyarehart.github.io/hummingbird/1.0.0/tutorial-tour.html)
--   [Why does Hummingbird exist?](https://kennyarehart.github.io/hummingbird/1.0.0/tutorial-why-exist.html)
+-   [Install guide](https://kennyarehart.github.io/hummingbird/tutorial-install.html)
+-   [Quick tour](https://kennyarehart.github.io/hummingbird/tutorial-tour.html)
+-   [Why does Hummingbird exist?](https://kennyarehart.github.io/hummingbird/tutorial-why-exist.html)
 
 ## Contribute
 
 Hummingbird is distributed under the MIT license. The code is available on Github. Patches welcome.
-
----
-
-## permalink: /index.html
