@@ -4,5 +4,8 @@
 	},
 	"tour": {
 		"title": "A quick tour"
+	},
+	"why-exist": {
+		"title": "Why does Hummingbird exist?"
 	}
 }

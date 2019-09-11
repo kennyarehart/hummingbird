@@ -57,7 +57,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li></ul><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul></div><div class="category"><h2>Constants</h2><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#SECONDS">SECONDS</a></li></ul></div><div class="category"><h2>Methods</h2><h3>Global</h3><ul><li><a href="global.html#release">release</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li><li><a href="tutorial-why-exist.html">Why does Hummingbird exist?</a></li></ul></div><div class="category"><h2>API</h2><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#SECONDS">SECONDS</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -213,7 +213,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line8">line 8</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line14">line 14</a>
             </span>
         </p>
     
@@ -221,6 +221,18 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>import { FLAPS, Hummingbird } from 'hummingbird'
+
+Hummingbird(function() { ... }, {
+ lifeSpan: 6
+ lifeSpanIn: FLAPS
+})</code></pre>
+    
 
 
 </div>
@@ -292,7 +304,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line17">line 17</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line29">line 29</a>
             </span>
         </p>
     
@@ -300,6 +312,18 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>import { SECONDS, Hummingbird } from 'hummingbird'
+
+Hummingbird(function() { ... }, {
+ speed: 1.3
+ speedIn: SECONDS
+})</code></pre>
+    
 
 
 </div>
@@ -319,7 +343,7 @@
     <h4 class="name" id="release">
         
         <span class="code-name">
-            release<span class="signature">(args)</span><span class="type-signature"></span>
+            release<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
         </span>
     </h4>
     
@@ -355,6 +379,8 @@ from the internal pools.</p>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -383,6 +409,16 @@ from the internal pools.</p>
   
   </td>
 
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
   
 
   
@@ -434,7 +470,7 @@ from the internal pools.</p>
         <p class="tag-source">
             <a href="manager.js.html" class="button">View Source</a>
             <span>
-                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line70">line 70</a>
+                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line73">line 73</a>
             </span>
         </p>
     
@@ -469,7 +505,10 @@ function bar() { ... }
 const fooBird = Hummingbird(foo)
 const barBird = Hummingbird(bar)
 
-Hummingbird.release(foo, bar)</code></pre>
+// release all by naming each
+Hummingbird.release(foo, bar)
+// or omit and will release everything
+Hummingbird.release()</code></pre>
     
 
 
@@ -481,7 +520,7 @@ Hummingbird.release(foo, bar)</code></pre>
     <h4 class="name" id="sleep">
         
         <span class="code-name">
-            sleep<span class="signature">(args)</span><span class="type-signature"></span>
+            sleep<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
         </span>
     </h4>
     
@@ -516,6 +555,8 @@ Hummingbird.release(foo, bar)</code></pre>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -544,6 +585,16 @@ Hummingbird.release(foo, bar)</code></pre>
   
   </td>
 
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
   
 
   
@@ -595,7 +646,7 @@ Hummingbird.release(foo, bar)</code></pre>
         <p class="tag-source">
             <a href="manager.js.html" class="button">View Source</a>
             <span>
-                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line129">line 129</a>
+                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line132">line 132</a>
             </span>
         </p>
     
@@ -645,7 +696,7 @@ Hummingbird.sleep()</code></pre>
     <h4 class="name" id="wake">
         
         <span class="code-name">
-            wake<span class="signature">(args)</span><span class="type-signature"></span>
+            wake<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
         </span>
     </h4>
     
@@ -680,6 +731,8 @@ Hummingbird.sleep()</code></pre>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -708,6 +761,16 @@ Hummingbird.sleep()</code></pre>
   
   </td>
 
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
   
 
   
@@ -759,7 +822,7 @@ Hummingbird.sleep()</code></pre>
         <p class="tag-source">
             <a href="manager.js.html" class="button">View Source</a>
             <span>
-                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line189">line 189</a>
+                <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line192">line 192</a>
             </span>
         </p>
     
@@ -826,7 +889,7 @@ Hummingbird.wake()</code></pre>
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Sep 10 2019 19:04:31 GMT-0700 (Pacific Daylight Time)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Sep 11 2019 00:21:02 GMT-0700 (Pacific Daylight Time)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>

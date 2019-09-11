@@ -1,4 +1,5 @@
 {
+	"name": "something awesome",
 	"opts": {
 		"encoding": "utf8",
 		"destination": "docs/",

@@ -57,7 +57,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li></ul><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul></div><div class="category"><h2>Constants</h2><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#SECONDS">SECONDS</a></li></ul></div><div class="category"><h2>Methods</h2><h3>Global</h3><ul><li><a href="global.html#release">release</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-install.html">Install guide</a></li><li><a href="tutorial-tour.html">A quick tour</a></li><li><a href="tutorial-why-exist.html">Why does Hummingbird exist?</a></li></ul></div><div class="category"><h2>API</h2><h3>Classes</h3><ul><li><a href="Flock.html">Flock</a></li><li><a href="Hummingbird.html">Hummingbird</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FLAPS">FLAPS</a></li><li><a href="global.html#release">release</a></li><li><a href="global.html#SECONDS">SECONDS</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#wake">wake</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -75,8 +75,71 @@
 </header>
 
 <article>
-    <p>a brief introduction</p>
-<h1>Your first Hummingbird</h1>
+    <p><a href="">Hummingbird</a> is a library that makes it easier to work with tickers and timers in Javascript; Fully scalable to include any number of methods at various iteration speeds and life spans. Using instance or global methods, you can sleep, resume and release methods from being handled.</p>
+<p>See the API docs for a more indepth as they are more comprehensive.</p>
+<h2>Creating a Hummingbird</h2>
+<p>There are a few ways to create a <a href="">Hummingbird</a> instance, including optional parameters. The simplest usage is to create an instance with an inline anonymous function. This will be called 30 times a second.</p>
+<pre class="prettyprint source"><code>new Hummingbird(function() {
+    ...
+})
+</code></pre>
+<p>or pass in a function to an instance:</p>
+<pre class="prettyprint source"><code>function foo() {
+    ...
+}
+new Hummingbird(foo)
+</code></pre>
+<h3>Create without new</h3>
+<p>The <code>new</code> keyword is optional with <a href="">Hummingbird</a></p>
+<pre class="prettyprint source"><code>Hummingbird(foo)
+</code></pre>
+<h3>Store a reference</h3>
+<p>Creating a <a href="">Hummingbird</a> returns an instance which can be stored in a variable. This is to access direct methods on the instance or to be passed in to global methods for control.</p>
+<pre class="prettyprint source"><code>const fooBird = Hummingbird(foo)
+</code></pre>
+<h3>Optional parameters</h3>
+<p>There are a number of optional parameters to control the speed, how that speed is interpreted, add a limit to the length of time the handler is called, how that time value is interpreted along with a handler for when that life span.</p>
+<pre class="prettyprint source"><code>const fooBird = Hummingbird(foo, {
+    speedIn: SECONDS,   // interpret speed in seconds
+    speed: 1.3,         // will call handler once every 1.3 seconds
+    lifeSpanIn: FLAPS,  // interpret lifeSpan in flaps
+    lifeSpan: 3,        // will call handler only 3 times
+    onComplete: function(a, b) {    // if lifeSpan, add a handler
+        // a = true, b = 'ruh'
+    },
+    onCompleteParams: [true, 'ruh'] // provide params to the handler
+})
+</code></pre>
+<h3>Controling the instance</h3>
+<p>There are methods on the Hummingbird instance to sleep (pause), wake (resume), and release (remove) it. Note that if all instances are asleep, the entire engine will stop running. Likewise, if any instance is unpaused, the engine will resume running.</p>
+<pre class="prettyprint source"><code>fooBird.sleep()
+// or
+fooBird.wake()
+</code></pre>
+<h2>Expanding to multiple methods</h2>
+<p>The real strength of Hummingbird comes when multiple methods all need to be called at the same time.</p>
+<pre class="prettyprint source"><code>// various types of methods
+function foo() { ... }
+const bar = () => { ... }
+const quz = {
+    baz: () => { ... }
+}
+
+Hummingbird(foo)
+Hummingbird(bar)
+Hummingbird(quz.baz)
+</code></pre>
+<p>This allows for controls to be called on the global static reference to Hummingbird.</p>
+<pre class="prettyprint source"><code>Hummingbird.sleep()
+// or
+Hummingbird.wake()
+</code></pre>
+<h3>Mixing speeds</h3>
+<p>Each instance can have a unique speed allowing for complex combinations of speeds.</p>
+<pre class="prettyprint source"><code>Hummingbird(foo, { speed: 12 })
+Hummingbird(bar, { speed: 24 })
+Hummingbird(quz.baz) // uses the default 30 fps
+</code></pre>
 </article>
 
 </section>
@@ -88,7 +151,7 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Sep 10 2019 19:04:31 GMT-0700 (Pacific Daylight Time)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Sep 11 2019 00:21:02 GMT-0700 (Pacific Daylight Time)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
