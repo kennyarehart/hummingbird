@@ -15,7 +15,7 @@
 	"templates": {
 		"better-docs": {
 			"name": "Hummingbird Documentation",
-			"logo.null": "images/logo.png",
+			"logo": "images/logo_hummingbirdjs.png",
 			"navigation": [
 				{
 					"label": "Github",
