@@ -2,7 +2,7 @@ What is Hummingbird and why does it exist? How does this compare to other packag
 
 ## Origin / Disclaimer
 
-This is a complete re-write and new take on [FrameRate](https://github.com/ff0000-ad-tech/ad-events/blob/master/docs/FrameRate.md), a sub class of another [package](https://github.com/ff0000-ad-tech/ad-events). The entire system has been re-imagined and re-written from the ground up with numerous added features.
+This is a complete re-write and new take on [FrameRate](https://github.com/ff0000-ad-tech/ad-events/blob/master/docs/FrameRate.md), a sub class of another [package](https://github.com/ff0000-ad-tech/ad-events) which I was the original author prior to it being open-sourced. The entire system has been re-imagined and re-written from the ground up with numerous added features.
 
 ## Problem
 
